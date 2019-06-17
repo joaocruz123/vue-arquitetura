@@ -66,16 +66,21 @@
     <v-content>
       <v-container fluid fill-height>
         <v-layout row wrap>
-          <router-view></router-view>
-        </v-layout>
-      </v-container>
+          <router-view></router-view>                   
+        </v-layout>        
+      </v-container>      
     </v-content>
+    <Footer></Footer> 
   </v-app>
 </template>
 
 <script>
-  export default {
+  import Footer from './components/Footer'
+  export default {    
     name: "App",
+    components: {
+      Footer
+    },
     data: () => ({
       dialog: false,
       drawer: null,

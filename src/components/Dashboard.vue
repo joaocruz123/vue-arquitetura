@@ -1,20 +1,22 @@
 <template>
   <v-flex xs12>
-    <v-card color="blue-grey darken-2" class="white--text">
+    <v-card color="teal lighten-1" class="white--text">
       <v-card-title primary-title>
         <div>
-          <div class="headline">Unlimited music now</div>
-          <span>Listen to your favorite artists and albums whenever and wherever, online and offline.</span>
+          <div class="headline">Bem Vindo ao Projeto Vue-Arquitetura</div>
+          <span>Projeto desenvolvido por João Cruz para novos projetos Admin.</span>
         </div>
       </v-card-title>
       <v-card-actions>
-        <v-btn flat dark>Listen now</v-btn>
+        <v-btn flat dark>Mais</v-btn>
       </v-card-actions>
     </v-card>
+    <footer></footer>
   </v-flex>
 </template>
 
 <script>
+import footer from './Footer'
 export default {};
 </script>
 
