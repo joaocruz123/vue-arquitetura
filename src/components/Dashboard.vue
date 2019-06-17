@@ -11,12 +11,10 @@
         <v-btn flat dark>Mais</v-btn>
       </v-card-actions>
     </v-card>
-    <footer></footer>
   </v-flex>
 </template>
 
 <script>
-import footer from './Footer'
 export default {};
 </script>
 
