@@ -1,48 +1,53 @@
 <template>
   <div>
     <!--Sidebar-->
-    <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" fixed app>
-      <v-list dense>
-        <template v-for="item in items">
-          <v-layout v-if="item.heading" :key="item.heading" row align-center>
-            <v-flex xs6>
-              <v-subheader v-if="item.heading">{{ item.heading }}</v-subheader>
-            </v-flex>
-          </v-layout>
-          <v-list-group
-            v-else-if="item.children"
-            :key="item.text"
-            v-model="item.model"
-            :prepend-icon="item.model ? item.icon : item['icon-alt']"
-            append-icon
-          >
-            <template v-slot:activator>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ item.text }}</v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </template>
-            <v-list-tile v-for="(child, i) in item.children" :key="i">
-              <v-list-tile-action v-if="child.icon">
-                <v-icon>{{ child.icon }}</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ child.text }}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list-group>
-          <v-list-tile v-else :key="item.text">
-            <v-list-tile-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ item.text }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </template>
+    <v-navigation-drawer
+    v-model="drawer"
+    :mini-variant.sync="mini"
+    :clipped="$vuetify.breakpoint.lgAndUp"
+    fixed
+    app
+    >
+    <v-toolbar flat class="transparent">
+      <v-list class="pa-0">
+        <v-list-tile avatar>
+          <v-list-tile-avatar>
+            <img src="https://randomuser.me/api/portraits/men/85.jpg">
+          </v-list-tile-avatar>
+
+          <v-list-tile-content>
+            <v-list-tile-title>John Leider</v-list-tile-title>
+          </v-list-tile-content>
+
+          <v-list-tile-action>
+            <v-btn
+              icon
+              @click.stop="mini = !mini"
+            >
+              <v-icon>chevron_left</v-icon>
+            </v-btn>
+          </v-list-tile-action>
+        </v-list-tile>
       </v-list>
-    </v-navigation-drawer>
+    </v-toolbar>
+
+    <v-list class="pt-0" dense>
+      <v-divider></v-divider>
+
+      <v-list-tile
+        v-for="item in items"
+        :key="item.title"
+      >
+        <v-list-tile-action>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-list-tile-action>
+
+        <v-list-tile-content>
+          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </v-list>
+  </v-navigation-drawer>
     <!--Toolbar - Header -->
     <v-toolbar :clipped-left="$vuetify.breakpoint.lgAndUp" color="teal lighten-1" dark app fixed>
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
@@ -109,24 +114,17 @@
 export default {
   name: "Header",
   data: () => ({
-    drawer: null,
+    drawer: true,
     fav: true,
     menu: false,
     message: false,
     hints: true,
+    mini: true,
+    right: null,
     items: [
-      { icon: "home", text: "Dashboard" },
-      { icon: "bar_chart", text: "Monitoramento" },
-      {
-        icon: "keyboard_arrow_up",
-        "icon-alt": "keyboard_arrow_down",
-        text: "Labels",
-        model: true,
-        children: [{ icon: "add", text: "Create label" }]
-      },
-
-      { icon: "settings", text: "Settings" }
-    ]
+          { title: 'Dashboard', icon: 'dashboard' },
+          { title: 'Monitoramento', icon: 'question_answer' }
+        ],
   })
 };
 </script>
